@@ -5,21 +5,40 @@ import {
   createBottomTabNavigator,
   BottomTabBar,
 } from '@react-navigation/bottom-tabs';
+import Svg,{Path} from 'react-native-svg';
 
 import {Home} from '../screens/';
 import {icons, COLORS} from '../constants/';
 
 const Tab = createBottomTabNavigator();
+//Functional Component TabBarCustomButton
+const TabBarCustomButton = ({accessibilityState,children,onPress})=>{
+  var isSelected = accessibilityState.isSelected;
+
+  if(isSelected){
+    return(
+      <View>
+        
+      </View>
+    )
+  }else{
+    return(
+      <View></View>
+    )
+  }
+}
+
+
 const Tabs = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
         showLabel: false,
-        style:{
-          backgroundColor:"transparent",
-          borderTopWidth:0,
-          elevation:0
-        }
+        style: {
+          backgroundColor: 'transparent',
+          borderTopWidth: 0,
+          elevation: 0,
+        },
       }}>
       <Tab.Screen
         name="Home"
@@ -36,6 +55,7 @@ const Tabs = () => {
               }}
             />
           ),
+          tabBarButton: (props) => <TabBarCustomButton {...props} />,
         }}
       />
       <Tab.Screen
@@ -53,6 +73,7 @@ const Tabs = () => {
               }}
             />
           ),
+          tabBarButton: (props) => <TabBarCustomButton {...props} />,
         }}
       />
       <Tab.Screen
@@ -70,6 +91,7 @@ const Tabs = () => {
               }}
             />
           ),
+          tabBarButton: (props) => <TabBarCustomButton {...props} />,
         }}
       />
       <Tab.Screen
@@ -87,6 +109,7 @@ const Tabs = () => {
               }}
             />
           ),
+          tabBarButton: (props) => <TabBarCustomButton {...props} />,
         }}
       />
     </Tab.Navigator>
